@@ -2,8 +2,6 @@ const Discord = require("discord.js");
 const { EmbedBuilder } = require('discord.js');
 const axios = require("axios");
 const bot = new Discord.Client({intents: 3276799});
-//const config = require ("./config");
-//require('dotenv').config();
 
 const apexAPIKey = String(process.env.API);
 const botToken = String(process.env.TOKEN);
