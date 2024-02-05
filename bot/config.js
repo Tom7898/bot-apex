@@ -1,1 +1,1 @@
-module.exports = {token: "MTIwMzA2NjU5NjQ0NTM4ODgwMg.GKE1Mh.8PXKdzlZcSpLQH5hZfnGL4db9RF7SvMFfFlJjA", api: "1acd21813293b3138a68ec36a0b4fedd"}
+module.exports = {}
