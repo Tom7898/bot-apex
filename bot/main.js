@@ -30,7 +30,9 @@ bot.on("messageCreate", async message => {
         try{
         request = false;
         const mapRequest = await axios.get("https://api.mozambiquehe.re/maprotation?auth=" + apexAPIKey);
+        console.log("Ca requete");
         const embedMap = new EmbedBuilder();
+        console.log("Embed créé");
         let currentMap = String(mapRequest.data.current.map);
         let currentTimeLeft = String(mapRequest.data.current.remainingTimer);
         if(currentMap === "Storm Point")
@@ -94,6 +96,7 @@ bot.on("messageCreate", async message => {
         }
 
         message.channel.send({embeds : [embedMap]});
+        console.log("Embed envoyé");
         request = true;
         } catch (error) {
             message.reply("Problème API :(")
