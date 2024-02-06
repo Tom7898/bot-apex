@@ -2,6 +2,16 @@ const Discord = require("discord.js");
 const { EmbedBuilder } = require('discord.js');
 const axios = require("axios");
 const bot = new Discord.Client({intents: 3276799});
+const http = require("http");
+
+const server = http.createServer((req, res) => {
+    res.writeHead(200, {"Content-type": "text/plain"});
+    res.end("Bonsoir");
+});
+
+const PORT = process.env.PORT;
+
+server.listen(PORT, () => console.log("Server is running on port 3000"));
 
 const apexAPIKey = String(process.env.API);
 const botToken = String(process.env.TOKEN);
