@@ -27,8 +27,8 @@ bot.on("ready", async() => {
 bot.on("messageCreate", async message => {
     if(message.content === "map" || message.content === "Map" && request == true)
     {
-        request = false;
         try{
+        request = false;
         const mapRequest = await axios.get("https://api.mozambiquehe.re/maprotation?auth=" + apexAPIKey);
         const embedMap = new EmbedBuilder();
         let currentMap = String(mapRequest.data.current.map);
@@ -94,20 +94,20 @@ bot.on("messageCreate", async message => {
         }
 
         message.channel.send({embeds : [embedMap]});
+        request = true;
         } catch (error) {
             message.reply("Problème API :(")
         }
-        request = true;
     }
 
     else if(message.content.startsWith("player") || message.content.startsWith("Player") && request == true)
     {
-        request = false;
         let splited = message.content.split('-');
         let name = splited[1];
         let platform = splited[2];
 
         try {
+        request = false;
         const playerRequest = await axios.get("https://api.mozambiquehe.re/bridge?auth=" + apexAPIKey + "&player=" + name + "&platform=" + platform);
         
         const embedPlayer = new EmbedBuilder();
@@ -132,19 +132,19 @@ bot.on("messageCreate", async message => {
         );
 
         message.channel.send({embeds : [embedPlayer]});
+        request = true;
         } catch (error) {
             message.reply("Données non trouvées :(")
         }
-        request = true;
     }
 
     else if(message.content.startsWith("preda") || message.content.startsWith("Preda") && request == true)
     {
-        request = false;
         let splited = message.content.split('-');
         let platform = splited[1];
 
         try {
+        request = false;
         const predaRequest = await axios.get("https://api.mozambiquehe.re/predator?auth=" + apexAPIKey);
         const embedPreda = new EmbedBuilder();
         let predaPoints = String(predaRequest.data.RP[platform].val);
@@ -160,16 +160,16 @@ bot.on("messageCreate", async message => {
         );
 
         message.channel.send({embeds : [embedPreda]});
+        request = true;
         } catch (error) {
             message.reply("Données non trouvées :(")
         }
-        request = true;
     }
 
     else if(message.content === "craft" || message.content === "Craft" && request == true)
     {
-        request = false;
         try{
+        request = false;
         const craftRequest = await axios.get("https://api.mozambiquehe.re/crafting?auth=" + apexAPIKey);
         const embedCraft1 = new EmbedBuilder();
         const embedCraft2 = new EmbedBuilder();
@@ -244,10 +244,10 @@ bot.on("messageCreate", async message => {
         message.channel.send({embeds : [embedCraft4]});
         message.channel.send({embeds : [embedCraft5]});
         message.channel.send({embeds : [embedCraft6]});
+        request = true;
         } catch (error) {
             message.reply("Problème API :(")
         }
-        request = true;
     }
 
     else if(message.content === "help" || message.content === "Help")
